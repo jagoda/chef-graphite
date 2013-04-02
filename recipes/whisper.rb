@@ -13,7 +13,7 @@ end
 
 execute "install whisper" do
   command "python setup.py install"
-  creates "#{node['python']['pip']['prefix_dir']}/lib/python#{node['graphite']['python_version']}/dist-packages/whisper-#{node['graphite']['version']}.egg-info"
+  creates "#{node['python']['prefix_dir']}/lib/python#{node['graphite']['python_version']}/dist-packages/whisper-#{node['graphite']['version']}.egg-info"
   cwd "#{Chef::Config[:file_cache_path]}/whisper-#{node['graphite']['version']}"
   action :nothing
   subscribes :run, 'execute[untar whisper]', :immediately
